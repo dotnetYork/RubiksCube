@@ -65,13 +65,13 @@
                                      Front.BottomMiddle, Front.MiddleMiddle, Front.TopMiddle,
                                      Front.BottomRight, Front.MiddleRight, Front.TopRight);
 
-                var left = Left.WithRightColumn(Bottom.TopLeft, Bottom.TopMiddle, Bottom.TopRight);
+                var left = Left.WithRightColumn(Bottom.GetTopRow().Rotate(Rotation.Clockwise));
 
-                var right = Right.WithLeftColumn(Top.BottomLeft, Top.BottomMiddle, Top.BottomRight);
+                var right = Right.WithLeftColumn(Top.GetBottomRow().Rotate(Rotation.Clockwise));
 
-                var top = Top.WithBottomRow(Left.BottomRight, Left.MiddleRight, Left.TopRight);
+                var top = Top.WithBottomRow(Left.GetRightColumn().Rotate(Rotation.Clockwise));
 
-                var bottom = Bottom.WithTopRow(Right.BottomLeft, Right.MiddleLeft, Right.TopLeft);
+                var bottom = Bottom.WithTopRow(Right.GetLeftColumn().Rotate(Rotation.Clockwise));
 
                 return new Cube(front, Back, left, right, top, bottom, Rotations + 1u);
             }
